@@ -5,10 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Game Tutorial</title>
   <link rel="stylesheet" href="./css/tutorial.css">
-  
+  <style>
+    .levels-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      margin: 60px auto;
+    }
+
+    .level-box {
+      background: rgba(0, 0, 0, 0.85);
+      color: white;
+      border: 2px solid #ffcc00;
+      border-radius: 10px;
+      padding: 20px;
+      width: 700px;
+      box-shadow: 0 0 12px rgba(255, 204, 0, 0.5);
+      transition: transform 0.3s;
+      position: relative;
+    }
+
+    .level-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+    }
+
+    .level-box h3 {
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    .difficulty {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 18px;
+    }
+
+    .easy { color: #00ff99; }
+    .medium { color: #ffcc00; }
+    .hard { color: #ff4444; }
+    .level-button {
+      margin-top: 15px;
+      display: inline-block;
+      background: linear-gradient(45deg, #ffcc00, #ffaa00);
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .level-button:hover {
+      background: linear-gradient(45deg, #ffaa00, #ffcc00);
+    }
+
+    @media screen and (max-width: 768px) {
+      .level-box {
+        width: 90%;
+      }
+      .controller-image {
+        width: 90%;
+      }
+      .tutorial-container {
+        padding: 0 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  
+
   <div class="navbar">
     <div class="logo">DroneRace</div>
     <nav>
@@ -17,14 +86,14 @@
         <li><a href="https://jiusuia.github.io/web_game/minigame.html">Games</a></li>
         <li><a href="tutorial.html">Tutorial</a></li>
         <li><a href="market.html">Join</a></li>
-       <a href=" https://jiusuia.github.io/web_game/market.html"><li><button style="color: black;">Contact</button></li></a> 
+        <a href=" https://jiusuia.github.io/web_game/market.html"><li><button style="color: black;">Contact</button></li></a>
       </ul>
     </nav>
   </div>
 
   <div class="tutorial-container">
     <h2>Game Controller Guide</h2>
-    <img src="./Picture/Contral.png" alt="Game Controller" class="controller-image">
+    <img src="./picture/Contral.png" alt="Game Controller" class="controller-image">
     <ul class="controls-list">
       <li><strong>Left Analogue Stick Up:</strong> Throttle</li>
       <li><strong>Left Analogue Stick Left/Right</strong>Yaw (horizontal) rotation</li>
@@ -32,15 +101,40 @@
       <li><strong>Right Analogue Stick Left/Right</strong>Roll (left/right) rotation</li>
       <li><strong>A Button:</strong>UI Interaction</li>
     </ul>
-    <br>
-    <br>
+    <br><br>
     <h4>Keyboard controller Guide</h4>
     <ul class="controls-list">
       <li><strong>W key:</strong>Throttle</li>
       <li><strong>A&D key:</strong>Yaw rotation</li>
       <li><strong>Up&Down key:</strong>Pitch rotation</li>
-      <li><strong>Left&Right key:</strong>Roll rotation</li> 
+      <li><strong>Left&Right key:</strong>Roll rotation</li>
     </ul>
+  </div>
+
+  <div class="levels-container">
+    <div class="level-box">
+      <div class="difficulty easy">★</div>
+      <img src="./picture/RRG_Level1_SS.PNG" alt="Training Ground" style="width:100%; border-radius:8px; margin-bottom:10px;">
+      <h3>Level 1: </h3>
+      <p>one sentence to introduce this level</p>
+      <a class="level-button" href="https://jiusuia.github.io/web_game/level1.html">Play Level 1</a>
+    </div>
+
+    <div class="level-box">
+      <div class="difficulty medium">★★</div>
+      <img src="" alt="still wait screenshot" style="width:100%; border-radius:8px; margin-bottom:10px;">
+      <h3>Level 2: </h3>
+      <p>level about snow</p>
+      <a class="level-button" href="https://jiusuia.github.io/web_game/level2.html">Play Level 2</a>
+    </div>
+
+    <div class="level-box">
+      <div class="difficulty hard">★★★</div>
+      <img src="./picture/RRG_Level3_SS.PNG" alt="Speed Circuit" style="width:100%; border-radius:8px; margin-bottom:10px;">
+      <h3>Level 3: </h3>
+      <p>123456</p>
+      <a class="level-button" href="https://jiusuia.github.io/web_game/level3.html">Play Level 3</a>
+    </div>
   </div>
 
 </body>
