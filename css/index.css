@@ -72,6 +72,14 @@ body {
   padding: 0;
 }
 
+.main-background {
+  background: rgba(159, 159, 159, 0.354); /* 半透明黑色 */
+  padding: 30px;
+  border-radius: 10px;
+  display: inline; 
+  backdrop-filter: blur(10px); 
+}
+
 .bg-video {
   position: absolute; 
   width: 100%;
