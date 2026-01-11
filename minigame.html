@@ -6,6 +6,39 @@
     <title>Unity WebGL Player | collaborative-practice-project</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+  <style id="discount-ui-style">
+  /* Discount overlay UI (no Unity source required) */
+  #discount-ui-root{position:fixed;top:14px;right:14px;z-index:9999;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;pointer-events:none;}
+  
+  #discount-hint{display:block;pointer-events:none;background:rgba(0,0,0,.6);color:#fff;padding:10px 14px;border-radius:999px;font-size:13px;max-width:280px;line-height:1.25;}
+  #discount-hint strong{font-weight:600;}
+#discount-fab{display:none;pointer-events:auto;border:0;border-radius:999px;padding:10px 14px;font-size:14px;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25);background:#111;color:#fff;}
+  #discount-fab:focus{outline:2px solid #fff;outline-offset:2px;}
+  #discount-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9998;display:none;}
+  #discount-modal{position:fixed;right:14px;top:58px;max-width:min(440px,calc(100vw - 28px));width:420px;background:#fff;color:#111;border-radius:14px;box-shadow:0 16px 50px rgba(0,0,0,.35);z-index:9999;display:none;pointer-events:auto;}
+  #discount-modal header{display:flex;align-items:center;justify-content:space-between;padding:14px 14px 10px;border-bottom:1px solid rgba(0,0,0,.08);}
+  #discount-modal header h2{margin:0;font-size:16px;line-height:1.2;}
+  #discount-close{border:0;background:transparent;font-size:18px;cursor:pointer;padding:6px 8px;border-radius:10px;}
+  #discount-close:hover{background:rgba(0,0,0,.06);}
+  #discount-modal .content{padding:12px 14px 14px;}
+  #discount-modal .hint{margin:0 0 10px;font-size:13px;opacity:.8;}
+  .discount-row{display:grid;grid-template-columns:64px 1fr auto;gap:10px;align-items:center;padding:10px 10px;border:1px solid rgba(0,0,0,.08);border-radius:12px;margin-bottom:10px;}
+  .discount-row:last-child{margin-bottom:0;}
+  .discount-pct{font-weight:700;}
+  .discount-code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:14px;}
+  .discount-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+  .discount-btn{border:1px solid rgba(0,0,0,.12);background:#f6f6f6;border-radius:10px;padding:8px 10px;font-size:13px;cursor:pointer;white-space:nowrap;}
+  .discount-btn:hover{background:#eee;}
+  .discount-btn.primary{background:#111;color:#fff;border-color:#111;}
+  .discount-btn.primary:hover{background:#222;}
+  #discount-toast{position:fixed;right:14px;top:58px;transform:translateY(-8px);opacity:0;transition:opacity .2s, transform .2s;z-index:10000;background:#111;color:#fff;padding:10px 12px;border-radius:12px;font-size:13px;pointer-events:none;}
+  #discount-toast.show{opacity:1;transform:translateY(0);}
+  @media (max-width:520px){
+    #discount-modal{left:14px;right:14px;width:auto;}
+    .discount-row{grid-template-columns:60px 1fr;}
+    .discount-actions{grid-column:1 / -1;justify-content:flex-start;}
+  }
+</style>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -118,5 +151,210 @@
       document.body.appendChild(script);
 
     </script>
+  <div id="discount-backdrop" aria-hidden="true"></div>
+<div id="discount-ui-root">
+  <div id="discount-hint">Reminder: After clicking <strong>“Get Ticket”</strong>, please come back to this page to claim your discount code.</div>
+  <button id="discount-fab" type="button" aria-haspopup="dialog" aria-controls="discount-modal">Claim discount ticket</button>
+  <div id="discount-modal" role="dialog" aria-modal="true" aria-label="Discount codes">
+    <header>
+      <h2>Discount codes</h2>
+      <button id="discount-close" type="button" aria-label="Close">✕</button>
+    </header>
+    <div class="content">
+      <p class="hint">Copy a code or open the ticket page (code is included in the link).</p>
+      
+    <div class="discount-row" data-code="hfnskvb2">
+      <div class="discount-pct">2%</div>
+      <div class="discount-code">hfnskvb2</div>
+      <div class="discount-actions">
+        <button class="discount-btn" type="button" data-action="copy">Copy code</button>
+        <button class="discount-btn primary" type="button" data-action="open">Open ticket page</button>
+      </div>
+    </div>
+
+    <div class="discount-row" data-code="ouhbyf4">
+      <div class="discount-pct">4%</div>
+      <div class="discount-code">ouhbyf4</div>
+      <div class="discount-actions">
+        <button class="discount-btn" type="button" data-action="copy">Copy code</button>
+        <button class="discount-btn primary" type="button" data-action="open">Open ticket page</button>
+      </div>
+    </div>
+
+    <div class="discount-row" data-code="zkhbed6">
+      <div class="discount-pct">6%</div>
+      <div class="discount-code">zkhbed6</div>
+      <div class="discount-actions">
+        <button class="discount-btn" type="button" data-action="copy">Copy code</button>
+        <button class="discount-btn primary" type="button" data-action="open">Open ticket page</button>
+      </div>
+    </div>
+
+    <div class="discount-row" data-code="qwernf8">
+      <div class="discount-pct">8%</div>
+      <div class="discount-code">qwernf8</div>
+      <div class="discount-actions">
+        <button class="discount-btn" type="button" data-action="copy">Copy code</button>
+        <button class="discount-btn primary" type="button" data-action="open">Open ticket page</button>
+      </div>
+    </div>
+
+    <div class="discount-row" data-code="issfms10">
+      <div class="discount-pct">10%</div>
+      <div class="discount-code">issfms10</div>
+      <div class="discount-actions">
+        <button class="discount-btn" type="button" data-action="copy">Copy code</button>
+        <button class="discount-btn primary" type="button" data-action="open">Open ticket page</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<div id="discount-toast" role="status" aria-live="polite">Copied!</div>
+<script id="discount-ui-script">
+(function() {
+  var fab = document.getElementById('discount-fab');
+  var hint = document.getElementById('discount-hint');
+  var modal = document.getElementById('discount-modal');
+  var backdrop = document.getElementById('discount-backdrop');
+  var closeBtn = document.getElementById('discount-close');
+  var toast = document.getElementById('discount-toast');
+  var TICKET_BASE = 'https://www.btwclub.co.uk/bird?achievementcode=';
+  // Unlock discount UI only after final completion (no Unity source required)
+  var UNLOCK_KEY = 'btw_discount_unlocked';
+
+  function setUnlockedUI(unlocked) {
+    if (hint) hint.style.display = unlocked ? 'none' : 'block';
+    if (fab) fab.style.display = unlocked ? 'inline-block' : 'none';
+  }
+
+  function isUnlocked() {
+    try { return localStorage.getItem(UNLOCK_KEY) === '1'; } catch (e) { return false; }
+  }
+
+  function unlockDiscountUI() {
+    try { localStorage.setItem(UNLOCK_KEY, '1'); } catch (e) {}
+    setUnlockedUI(true);
+    // If embedded in a parent page, notify it too (harmless if not used)
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: UNLOCK_KEY }, '*');
+      }
+    } catch (e) {}
+  }
+
+  function isTicketUrl(url) {
+    return typeof url === 'string' &&
+      (url.indexOf('btwclub.co.uk/bird') !== -1 || url.indexOf('achievementcode') !== -1);
+  }
+
+  // Initial state: hidden until unlocked
+  setUnlockedUI(isUnlocked());
+
+  // Treat "Get Ticket" redirect as the completion signal
+  (function hookTicketRedirect() {
+    var _open = window.open;
+    window.open = function(url, target, features) {
+      try { if (isTicketUrl(url)) unlockDiscountUI(); } catch (e) {}
+      return _open.call(window, url, target, features);
+    };
+
+    try {
+      var loc = window.location;
+      var _assign = loc.assign.bind(loc);
+      loc.assign = function(url) {
+        try { if (isTicketUrl(url)) unlockDiscountUI(); } catch (e) {}
+        return _assign(url);
+      };
+      var _replace = loc.replace.bind(loc);
+      loc.replace = function(url) {
+        try { if (isTicketUrl(url)) unlockDiscountUI(); } catch (e) {}
+        return _replace(url);
+      };
+    } catch (e) {}
+  })();
+
+
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg || 'Done';
+    toast.classList.add('show');
+    window.clearTimeout(showToast._t);
+    showToast._t = window.setTimeout(function() { toast.classList.remove('show'); }, 1400);
+  }
+
+  function openModal() {
+    backdrop.style.display = 'block';
+    modal.style.display = 'block';
+    fab.setAttribute('aria-expanded', 'true');
+    // prevent Unity canvas interactions while modal open
+    document.documentElement.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    backdrop.style.display = 'none';
+    modal.style.display = 'none';
+    fab.setAttribute('aria-expanded', 'false');
+    document.documentElement.style.overflow = '';
+  }
+
+  function fallbackCopyText(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast('Copied: ' + text);
+      return true;
+    } catch (e) {
+      showToast('Copy failed');
+      return false;
+    } finally {
+      document.body.removeChild(ta);
+    }
+  }
+
+  async function copyText(text) {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        showToast('Copied: ' + text);
+        return true;
+      }
+    } catch (e) {}
+    return fallbackCopyText(text);
+  }
+
+  fab.addEventListener('click', function() {
+    if (modal.style.display === 'block') closeModal();
+    else openModal();
+  });
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.style.display === 'block') closeModal();
+  });
+
+  modal.addEventListener('click', function(e) {
+    var btn = e.target && e.target.closest('button[data-action]');
+    if (!btn) return;
+    var row = btn.closest('.discount-row');
+    var code = row && row.getAttribute('data-code');
+    if (!code) return;
+
+    var action = btn.getAttribute('data-action');
+    if (action === 'copy') {
+      copyText(code);
+    } else if (action === 'open') {
+      var url = TICKET_BASE + encodeURIComponent(code);
+      window.open(url, '_blank', 'noopener');
+    }
+  });
+})();
+</script>
   </body>
 </html>
